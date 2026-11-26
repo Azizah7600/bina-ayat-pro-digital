@@ -115,6 +115,7 @@
     if (/KOD_PENUH/.test(m)) return 'Kod akses ini telah mencapai had penggunaan.';
     if (/MATRIK_WUJUD/.test(m)) return 'Nombor matrik ini telah didaftarkan.';
     if (/Database error saving new user/i.test(m)) return 'Pendaftaran ditolak. Semak kod akses dan nombor matrik anda.';
+    if (/email.*invalid|email_address_invalid/i.test(m)) return 'Format akaun tidak diterima oleh pelayan. Sila maklumkan kepada guru (tetapan STUDENT_EMAIL_DOMAIN).';
     if (/Password should be/i.test(m)) return 'Kata laluan mesti sekurang-kurangnya 6 aksara.';
     if (/duplicate key.*attempts/i.test(m)) return 'Ujian ini telah diduduki.';
     return m;
@@ -122,7 +123,7 @@
   const muatSB = () => new Promise((res, rej) => {
     if (window.supabase) return res();
     const s = document.createElement('script');
-    s.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js';
+    s.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js';
     s.onload = res; s.onerror = () => rej(err('Gagal memuatkan pustaka Supabase. Semak sambungan Internet.'));
     document.head.appendChild(s);
   });
