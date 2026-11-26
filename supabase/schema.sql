@@ -189,6 +189,12 @@ drop policy if exists "ayat: guru semak" on public.submissions;
 create policy "ayat: guru semak" on public.submissions
   for update to authenticated using (public.is_guru()) with check (public.is_guru());
 
+-- Kebenaran akses API untuk pengguna yang log masuk (GRANT_EKSPLISIT).
+-- RLS di atas tetap mengawal baris mana yang boleh dibaca atau diubah.
+grant usage on schema public to authenticated;
+grant select, insert, update, delete on public.access_codes, public.profiles, public.attempts, public.submissions to authenticated;
+grant execute on function public.is_guru() to authenticated;
+
 -- ---------------------------------------------------------------------
 -- 4. DATA AWAL: kod pendaftaran guru pertama
 --    TUKAR kod ini kepada kod rahsia anda sendiri sebelum menjalankan
@@ -216,3 +222,4 @@ create policy "log: tambah sendiri" on public.usage_logs
 drop policy if exists "log: baca sendiri atau guru" on public.usage_logs;
 create policy "log: baca sendiri atau guru" on public.usage_logs
   for select to authenticated using (user_id = auth.uid() or public.is_guru());
+grant select, insert on public.usage_logs to authenticated; -- GRANT_EKSPLISIT

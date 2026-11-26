@@ -21,3 +21,4 @@ create policy "log: tambah sendiri" on public.usage_logs
 drop policy if exists "log: baca sendiri atau guru" on public.usage_logs;
 create policy "log: baca sendiri atau guru" on public.usage_logs
   for select to authenticated using (user_id = auth.uid() or public.is_guru());
+grant select, insert on public.usage_logs to authenticated; -- GRANT_EKSPLISIT
