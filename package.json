@@ -1,0 +1,12 @@
+{
+  "name": "bina-ayat-pro-digital",
+  "version": "1.0.0",
+  "description": "BINA AYAT PRO DIGITAL – Faham, Susun, Bina dan Semak. Inovasi Cikgu Azizah Ismail, Kolej Vokasional Wakaf Tembesu.",
+  "private": true,
+  "scripts": {
+    "start": "serve . -l tcp://0.0.0.0:${PORT:-3000}"
+  },
+  "dependencies": {
+    "serve": "14.2.4"
+  }
+}
