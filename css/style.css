@@ -395,3 +395,6 @@ body[data-bg=minimal] .q-card,body[data-bg=minimal] .card{background:light-dark(
 .card .btn.ghost:hover,.modal-box .btn.ghost:hover{background:var(--soft)}
 .main .btn.ghost.danger,.card .btn.ghost.danger{color:var(--bad);border-color:var(--bad)}
 .hero-txt{text-shadow:0 2px 12px rgba(2,8,40,.55)}
+.demo-strip{letter-spacing:.06em;display:flex;justify-content:center;align-items:center;gap:6px 12px;flex-wrap:wrap}
+.demo-tag{font-size:11px;letter-spacing:0;font-weight:700;background:rgba(11,22,64,.14);border:1px solid rgba(11,22,64,.3);padding:2px 8px;border-radius:99px}
+@media (max-width:600px){.demo-strip{font-size:11px;padding:6px 10px}}

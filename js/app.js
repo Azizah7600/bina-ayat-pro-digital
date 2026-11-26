@@ -149,11 +149,15 @@
   const NAV_P = [['utama', 'Utama'], ['modul', 'Modul'], ['ujian', 'Ujian Pra & Pasca'], ['pencapaian', 'Pencapaian'], ['panduan', 'Panduan']];
   const NAV_G = [['g-ringkasan', 'Ringkasan'], ['g-pelajar', 'Pelajar'], ['g-analisis', 'Analisis'], ['g-semakan', 'Semakan Ayat'], ['g-kod', 'Kod Akses'], ['g-penggunaan', 'Rekod Penggunaan'], ['g-laporan', 'Laporan'], ['panduan', 'Panduan']];
 
+  function jalurKuning() {
+    const teks = C.JALUR_TEKS || 'PLATFORM PEMBELAJARAN TATABAHASA BAHASA MELAYU SVM • KOLEJ VOKASIONAL WAKAF TEMBESU';
+    return `<div class="demo-strip">${h(teks)}${Store.mode === 'demo' ? '<span class="demo-tag">Mod Demo: data disimpan dalam pelayar ini sahaja</span>' : ''}</div>`;
+  }
   function shell(isi) {
     const guru = S.user.peranan === 'guru', nav = guru ? NAV_G : NAV_P;
     const aktif = v => S.view === v || (v === 'modul' && /^(modulDetail|run|bina)/.test(S.view)) || (v === 'g-pelajar' && S.view === 'g-pelajarDetail');
     const menunggu = guru && S.g ? S.g.ayat.filter(a => a.status === 'menunggu').length : 0;
-    return `${Store.mode === 'demo' ? '<div class="demo-strip">MOD DEMO: data disimpan dalam pelayar ini sahaja. Untuk sistem rasmi, sambungkan Supabase (rujuk Panduan).</div>' : ''}
+    return `${jalurKuning()}
     <header class="top"><div class="top-in">
       <a class="brand" href="#" data-act="nav" data-v="${guru ? 'g-ringkasan' : 'utama'}"><img class="brand-img" src="assets/logo-bina-ayat.png" alt="BINA AYAT PRO DIGITAL – Faham, Susun, Bina, Semak" width="260" height="54"></a>
       <div class="who"><span class="who-n">${h(S.user.nama)}</span><span class="who-r">${guru ? 'Guru' : 'Semester ' + h(S.user.semester || '–')}</span><button class="btn sm ghost-inv" data-act="keluar">Log keluar</button></div>
@@ -214,7 +218,7 @@
         <label>Sahkan kata laluan<input name="pw2" type="password" minlength="6" required autocomplete="new-password"></label></div>
         <button class="btn primary block">Daftar Akaun Guru</button>
       </form>`;
-    return `${demo ? '<div class="demo-strip">MOD DEMO: data disimpan dalam pelayar ini sahaja. Untuk sistem rasmi, sambungkan Supabase.</div>' : ''}
+    return `${jalurKuning()}
     <header class="top land-top"><div class="top-in">
       <a class="brand" href="#" data-act="lompat-ke" data-ke="atas"><img class="brand-img" src="assets/logo-bina-ayat.png" alt="BINA AYAT PRO DIGITAL – Faham, Susun, Bina, Semak" width="260" height="54"></a>
       <div class="row gap"><button class="btn sm ghost-inv" data-act="lompat-ke" data-ke="kenali">Kenali Aplikasi</button><button class="btn sm gold" data-act="lompat-ke" data-ke="akses" data-tab="masuk">Log Masuk</button></div>
