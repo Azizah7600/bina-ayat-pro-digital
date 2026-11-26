@@ -576,12 +576,32 @@
         <ul class="syarat"><li class="${sj.pasca && sj.pasca.markah >= 60 ? 'ok' : ''}">Ujian Pasca ≥ 60${sj.pasca ? ' (anda: ' + sj.pasca.markah + ')' : ''}</li><li class="${sj.modulOk ? 'ok' : ''}">Modul 1, 2, 3, 5 dan 6 ≥ 60%</li><li class="${sj.ayatOk ? 'ok' : ''}">3 ayat Modul 4 dihantar (anda: ${ay.length})</li></ul></div>
         ${sj.layak ? '<button class="btn gold" data-act="nav" data-v="sijil">Lihat dan cetak sijil</button>' : '<span class="muted">Belum layak</span>'}</section></div>`;
   }
+  function noSiri(u) {
+    let x = 2166136261; for (const ch of String(u.id)) { x ^= ch.charCodeAt(0); x = Math.imul(x, 16777619) >>> 0; }
+    return 'BAP-' + new Date().getFullYear() + '-' + x.toString(36).toUpperCase().padStart(7, '0').slice(-7);
+  }
   function htmlSijil() {
-    const sj = A.sijil(S.cub, S.ayat); const lc = A.lencana(S.cub, S.ayat).filter(l => l.ok);
-    return `<div class="sijil"><div class="sj-in">${logo(64)}<p class="sj-t">SIJIL PENCAPAIAN</p><h1>BINA AYAT PRO DIGITAL</h1><p>Dengan ini disahkan bahawa</p><h2>${h(S.user.nama)}</h2><p>No. Matrik ${h(S.user.no_matrik || '')} · ${h(S.user.kelas || 'Semester ' + S.user.semester)}</p>
-      <p>telah berjaya melengkapkan program penguasaan tatabahasa dan pembinaan ayat gramatis bahasa Melayu dengan pencapaian <b>${A.gred(sj.pasca ? sj.pasca.markah : 0)}</b> (Ujian Pasca: ${sj.pasca ? sj.pasca.markah : '–'}/100).</p>
-      ${lc.length ? `<p class="small">Lencana: ${lc.map(l => h(l.nama)).join(' · ')}</p>` : ''}
-      <div class="sj-ttd"><div><span></span><b>${h(C.PEMILIK_INOVASI)}</b><small>Pemilik Inovasi</small></div><div><span></span><b>${tarikh(new Date().toISOString())}</b><small>Tarikh</small></div></div><p class="small">${h(C.NAMA_INSTITUSI)}</p></div></div>`;
+    const sj = A.sijil(S.cub, S.ayat), lc = A.lencana(S.cub, S.ayat).filter(l => l.ok);
+    const m = sj.pasca ? sj.pasca.markah : 0, gred = A.gred(m);
+    const sudut = '<svg viewBox="0 0 100 100" aria-hidden="true"><path d="M4 4h60v6H10v54H4z" fill="#0B1640"/><path d="M16 16h34v3H19v31h-3z" fill="#D9A93A"/><circle cx="16" cy="16" r="5" fill="#D9A93A"/></svg>';
+    return `<div class="sjw"><div class="sijil2">
+      <div class="sj-fr"></div>${['tl', 'tr', 'bl', 'br'].map(k => `<span class="sj-c ${k}">${sudut}</span>`).join('')}
+      <div class="sj-top"><img class="sj-kv" src="assets/logo-kv.png" alt="Kolej Vokasional, Kementerian Pendidikan Malaysia"><div class="sj-band"><img src="assets/logo-bina-ayat.png" alt="BINA AYAT PRO DIGITAL"></div></div>
+      <p class="sj-k">SIJIL PENCAPAIAN</p>
+      <p class="sj-d">Dengan ini disahkan bahawa</p>
+      <h2 class="sj-n">${h(S.user.nama)}</h2>
+      <p class="sj-m">No. Matrik ${h(S.user.no_matrik || '–')} &nbsp;·&nbsp; ${h(S.user.kelas || 'Semester ' + S.user.semester)}</p>
+      <p class="sj-x">telah berjaya melengkapkan program penguasaan tatabahasa dan pembinaan ayat gramatis bahasa Melayu melalui inovasi <b>BINA AYAT PRO DIGITAL</b> dengan pencapaian</p>
+      <div class="sj-g"><span>${h(gred.toUpperCase())}</span><small>${A.ujian(S.cub, 'pra') ? `Ujian Pra ${A.ujian(S.cub, 'pra').markah} &nbsp;→&nbsp; Ujian Pasca ${m}/100` : `Ujian Pasca ${m}/100`}</small></div>
+      ${lc.length ? `<p class="sj-l">${lc.map(l => `<span>${h(l.nama)}</span>`).join('')}</p>` : ''}
+      <div class="sj-bot">
+        <div class="sj-sig"><img src="assets/tandatangan-azizah.svg" alt="Tandatangan"><i></i><b>CIKGU AZIZAH ISMAIL</b><small>Pensyarah Bahasa Melayu<br>Pemilik Inovasi BINA AYAT PRO DIGITAL</small></div>
+        <div class="sj-seal"><svg viewBox="0 0 120 120" aria-hidden="true"><defs><linearGradient id="sjg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F7E3A1"/><stop offset=".5" stop-color="#D9A93A"/><stop offset="1" stop-color="#9A7019"/></linearGradient></defs>
+          <path d="M60 2l9 10 13-4 4 13 13 4-4 13 10 9-10 9 4 13-13 4-4 13-13-4-9 10-9-10-13 4-4-13-13-4 4-13-10-9 10-9-4-13 13-4 4-13 13 4z" fill="url(#sjg)"/><circle cx="60" cy="60" r="38" fill="#0B1640"/><circle cx="60" cy="60" r="33" fill="none" stroke="#D9A93A" stroke-width="1.5" stroke-dasharray="2 3"/>
+          <text x="60" y="50" text-anchor="middle" font-size="8" font-weight="800" fill="#F7E3A1" letter-spacing="1.5">KVWT</text><text x="60" y="63" text-anchor="middle" font-size="10" font-weight="900" fill="#fff">BINA AYAT</text><text x="60" y="74" text-anchor="middle" font-size="6.5" font-weight="800" fill="#F7E3A1" letter-spacing="1">PRO DIGITAL</text></svg></div>
+        <div class="sj-info"><p><small>Tarikh</small><b>${tarikh(new Date().toISOString())}</b></p><p><small>No. Siri Sijil</small><b>${noSiri(S.user)}</b></p><p><small>Institusi</small><b>${h(C.NAMA_INSTITUSI)}</b></p></div>
+      </div>
+    </div></div>`;
   }
   function vSijil() {
     if (!A.sijil(S.cub, S.ayat).layak) return vPencapaian();

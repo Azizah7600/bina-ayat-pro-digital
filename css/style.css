@@ -398,3 +398,36 @@ body[data-bg=minimal] .q-card,body[data-bg=minimal] .card{background:light-dark(
 .demo-strip{letter-spacing:.06em;display:flex;justify-content:center;align-items:center;gap:6px 12px;flex-wrap:wrap}
 .demo-tag{font-size:11px;letter-spacing:0;font-weight:700;background:rgba(11,22,64,.14);border:1px solid rgba(11,22,64,.3);padding:2px 8px;border-radius:99px}
 @media (max-width:600px){.demo-strip{font-size:11px;padding:6px 10px}}
+
+/* ---------- sijil digital (naik taraf) ---------- */
+.sjw{container-type:inline-size;width:100%;max-width:1123px;margin:0 auto}
+.sijil2{position:relative;aspect-ratio:297/210;background:radial-gradient(120% 90% at 50% 40%,#FFFFFF 55%,#FBF6E6 100%);color:#0B1640;overflow:hidden;font-family:"Plus Jakarta Sans",Inter,system-ui,sans-serif;display:flex;flex-direction:column;align-items:center;text-align:center;padding:3.2cqw 6cqw 2.6cqw;box-shadow:0 20px 50px rgba(2,8,40,.35);text-shadow:none}
+.sijil2,.sijil2 *{text-shadow:none!important}
+.sj-fr{position:absolute;inset:1.4cqw;border:.5cqw solid #0B1640;outline:.16cqw solid #D9A93A;outline-offset:-1.1cqw;pointer-events:none}
+.sj-c{position:absolute;width:7cqw;height:7cqw}.sj-c svg{width:100%;height:100%}
+.sj-c.tl{left:.6cqw;top:.6cqw}.sj-c.tr{right:.6cqw;top:.6cqw;transform:scaleX(-1)}.sj-c.bl{left:.6cqw;bottom:.6cqw;transform:scaleY(-1)}.sj-c.br{right:.6cqw;bottom:.6cqw;transform:scale(-1,-1)}
+
+.sj-top{position:relative;width:100%;display:flex;justify-content:space-between;align-items:center;gap:2cqw;margin-top:.6cqw}
+.sj-kv{height:6.4cqw;width:auto}
+.sj-band{background:linear-gradient(90deg,#01257B,#06309A 60%,#1C1F86);border-radius:1cqw;padding:.5cqw 1.2cqw;box-shadow:0 .6cqw 1.6cqw rgba(1,37,123,.3)}
+.sj-band img{height:5.4cqw;width:auto;display:block}
+.sj-k{margin:1.6cqw 0 0;font-size:3.3cqw;font-weight:900;letter-spacing:.5cqw;background:linear-gradient(90deg,#9A7019,#D9A93A 45%,#9A7019);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sj-d{margin:.5cqw 0 0;font-size:1.45cqw;color:#3C4A6E;font-style:italic}
+.sj-n{margin:.9cqw 0 .2cqw;font-size:4.4cqw;line-height:1.1;font-weight:800;color:#06309A;border-bottom:.16cqw solid #D9A93A;padding:0 3cqw .5cqw}
+.sj-m{margin:.6cqw 0 0;font-size:1.4cqw;font-weight:600;color:#3C4A6E}
+.sj-x{margin:1.6cqw 0 0;max-width:68cqw;font-size:1.55cqw;line-height:1.5;color:#1E2A4F}
+.sj-g{margin-top:1.4cqw;display:flex;flex-direction:column;align-items:center;gap:.2cqw}
+.sj-g span{background:linear-gradient(120deg,#0B1640,#2A1766);color:#F7E3A1;font-weight:900;letter-spacing:.35cqw;font-size:2cqw;padding:.5cqw 2.4cqw;border-radius:99px;border:.18cqw solid #D9A93A}
+.sj-g small{font-size:1.3cqw;font-weight:700;color:#5A6884}
+.sj-l{margin:1.6cqw 0 0;display:flex;flex-wrap:wrap;justify-content:center;gap:.5cqw;max-width:74cqw}
+.sj-l span{font-size:1cqw;font-weight:700;color:#7A5A12;background:#FBF0CF;border:.1cqw solid #E8CD7E;padding:.25cqw .9cqw;border-radius:99px}
+.sj-bot{position:relative;margin-top:auto;width:100%;display:grid;grid-template-columns:1fr auto 1fr;align-items:end;gap:2cqw}
+.sj-sig{display:flex;flex-direction:column;align-items:center;justify-self:start;min-width:26cqw}
+.sj-sig img{width:22cqw;height:auto;margin-bottom:-1.4cqw}
+.sj-sig i{display:block;width:100%;height:.12cqw;background:#0B1640}
+.sj-sig b{margin-top:1cqw;font-size:1.35cqw;letter-spacing:.08cqw}.sj-sig small{font-size:1cqw;color:#5A6884;line-height:1.35}
+.sj-seal svg{width:13cqw;height:13cqw;display:block;filter:drop-shadow(0 .5cqw .8cqw rgba(154,112,25,.35))}
+.sj-info{justify-self:end;text-align:left;display:grid;gap:.5cqw;min-width:24cqw;border-left:.3cqw solid #D9A93A;padding-left:1.4cqw}
+.sj-info p{margin:0;display:flex;flex-direction:column}.sj-info small{font-size:.95cqw;color:#5A6884;font-weight:600;text-transform:uppercase;letter-spacing:.1cqw}.sj-info b{font-size:1.3cqw}
+#print-area .sjw{max-width:none;width:297mm}#print-area .sijil2{box-shadow:none;width:297mm;height:210mm;aspect-ratio:auto}
+@media print{#print-area:has(.sijil2){page:sijil}@page sijil{size:A4 landscape;margin:0}.sijil2{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
