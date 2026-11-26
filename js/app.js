@@ -150,7 +150,7 @@
   const NAV_G = [['g-ringkasan', 'Ringkasan'], ['g-pelajar', 'Pelajar'], ['g-analisis', 'Analisis'], ['g-semakan', 'Semakan Ayat'], ['g-kod', 'Kod Akses'], ['g-penggunaan', 'Rekod Penggunaan'], ['g-laporan', 'Laporan'], ['panduan', 'Panduan']];
 
   function jalurKuning() {
-    const teks = C.JALUR_TEKS || 'PLATFORM PEMBELAJARAN TATABAHASA BAHASA MELAYU SVM • KOLEJ VOKASIONAL WAKAF TEMBESU';
+    const teks = C.JALUR_TEKS || 'BELAJAR TATABAHASA DENGAN SERONOK • FAHAM • SUSUN • BINA • SEMAK';
     return `<div class="demo-strip">${h(teks)}${Store.mode === 'demo' ? '<span class="demo-tag">Mod Demo: data disimpan dalam pelayar ini sahaja</span>' : ''}</div>`;
   }
   function shell(isi) {

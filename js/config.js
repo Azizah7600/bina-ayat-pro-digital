@@ -14,7 +14,7 @@ window.BAP_CONFIG = {
   // E-mel ini tidak digunakan untuk menghantar surat. Jangan ubah selepas pelajar mula mendaftar.
   STUDENT_EMAIL_DOMAIN: 'pelajar.binaayatpro.app',
   // Teks pada jalur kuning di bahagian paling atas aplikasi (boleh diubah)
-  JALUR_TEKS: 'PLATFORM PEMBELAJARAN TATABAHASA BAHASA MELAYU SVM • KOLEJ VOKASIONAL WAKAF TEMBESU',
+  JALUR_TEKS: 'BELAJAR TATABAHASA DENGAN SERONOK • FAHAM • SUSUN • BINA • SEMAK',
   NAMA_INSTITUSI: 'Kolej Vokasional Wakaf Tembesu',
   PEMILIK_INOVASI: 'Cikgu Azizah Ismail'
 };
